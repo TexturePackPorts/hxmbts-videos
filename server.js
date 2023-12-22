@@ -3,7 +3,9 @@ const fileUpload = require('express-fileupload');
 
 const app = express()
 
-app.use(fileUpload())
+app.use(fileUpload({
+    limits: { fileSize: 2 * 1024 * 1024 * 1024 },
+}))
 
 app.post('/upload_video', function(req, res) {
     let sampleFile;
